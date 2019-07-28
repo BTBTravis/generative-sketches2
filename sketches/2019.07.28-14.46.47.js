@@ -14,26 +14,29 @@ function getColor() {
     return pickedColor;
 }
 
+function rn(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 const sketch = () => {
     return ({ context, width, height }) => {
 	context.fillStyle = 'white';
 	context.fillRect(0, 0, width, height);
 	paper.install(window);
-	// Setup directly from canvas id:
 	paper.setup(document.querySelector('canvas'));
-	//var path = new Path();
-	//path.strokeColor = 'black';
+        var bg = new Path.Rectangle(new Point(0,0), new Point(512, 512));
+        bg.fillColor = getColor();
 
 	var vector = new Point({
 	    angle: 45,
-	    length: 512 / 6
+            length: rn(-500, 500)
 	});
 	var guide1 = new Path();
 	guide1.segments = [
 	    [[256, -250], null, vector.rotate(0)],
-	    [[256, 200], vector.rotate(180), null],
+	    [[256, 240], vector.rotate(180), null],
 	];
-	guide1.strokeColor = 'black';
+	//guide1.strokeColor = 'black';
 
         const otherGuideAngles = [ 90, 180, 270 ];
         let guideLines = otherGuideAngles.map(d => {
@@ -44,18 +47,20 @@ const sketch = () => {
         guideLines.push(guide1);
         const guidePoints = guideLines.map(l => {
             let pts = [];
-            var offset = l.length / 6;
-            for (let i = 0; i <= 6; i++) {
-                // Find the point on the path:
-                pts.push(l.getPointAt(offset * i));
+            cuts = 8;
+            var offset = l.length / cuts;
+            let y = x => x / 2;
+            //[1, .77
+            for (let i = 0; i <= cuts; i++) {
+                pts.push(l.getPointAt(l.length - (400 / i)));
             }
-            pts.forEach(pt => {
-                let circle = new Path.Circle({
-                    center: pt,
-                    radius: 3,
-                    fillColor: 'red'
-                });
-            });
+            //pts.forEach(pt => {
+                //let circle = new Path.Circle({
+                    //center: pt,
+                    //radius: 3,
+                    //fillColor: 'red'
+                //});
+            //});
             return pts;
         });
 
@@ -66,42 +71,9 @@ const sketch = () => {
 	    cLine.lineTo(guidePoints[2][i]);
 	    cLine.lineTo(guidePoints[3][i]);
 	    cLine.closePath();
-	    //cLine.fullySelected = true;
-            //cLine.fillColor = getColor();
+            //cLine.fullySelected = true;
+            cLine.fillColor = getColor();
 	}
-
-
-
-
-	//path.fullySelected = true;
-
-
-//project.currentStyle.fillColor = 'black';
-//for (var i = 0; i < 3; i++) {
-	//var segment = path.segments[i];
-	//var text = new PointText({
-		//point: segment.point - [0, 10],
-		//content: i,
-		//justification: 'center'
-	//});
-//}
-
-
-// Call onMouseMove once to correctly position the text items:
-onMouseMove({ point: view.center - vector.rotate(-90) });
-
-
-        // TODO: 4 arrays of guide points
-	// TODO: connect the guide points
-
-        // TODO: connectin
-	//var start = new Point(512, 512);
-	var start = new Point(0, 0);
-	path.moveTo(start);
-	path.lineTo(new Point(256, 256));
-	path.lineTo(new Point(0, 512));
-	//path.lineTo(start.add([ 0, -512 ]));
-
 
 
 	// Create drawing
