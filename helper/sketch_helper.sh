@@ -99,6 +99,8 @@ assign_positional_args 1 "${_positionals[@]}"
 # [ <-- needed because of Argbash
 
 
+# select statment source https://bash.cyberciti.biz/guide/Select_loop
+
 if [[ "$_arg_command" == "new" ]]; then
     ./node_modules/.bin/canvas-sketch --new --open
 elif [[ "$_arg_command" == "open" ]]; then
