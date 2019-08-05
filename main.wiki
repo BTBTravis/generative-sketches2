@@ -1,1 +1,11 @@
+= Sketches =
+== Resources ==
 http://paperjs.org/tutorials/paths/working-with-path-items/https://github.com/mattdesl/canvas-sketch/blob/master/docs/webgl.mdhttps://twitter.com/mattdesl/status/1155036597374660608?s=09
+
+== Keyboard sketch ==
+- interactive sketch
+- huge keyboard
+- keys compress when you type
+- after typing letter semi transparent text box appiers centered over the canvas
+- svg keys?
+- layout ascii?

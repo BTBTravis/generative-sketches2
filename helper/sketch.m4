@@ -10,12 +10,13 @@ exit 11  #)Created by argbash-init v2.8.1
 # [ <-- needed because of Argbash
 
 # select statment source https://bash.cyberciti.biz/guide/Select_loop
+SKETCHES=`ls sketches | ag '^2'`
 
 if [[ "$_arg_command" == "new" ]]; then
     ./node_modules/.bin/canvas-sketch --new --open
 elif [[ "$_arg_command" == "open" ]]; then
     PS3="Which file to open?"
-    select file in `ls sketches`
+    select file in $SKETCHES
     do
         echo "$file selected"
         ./node_modules/.bin/canvas-sketch --open ./sketches/"$file"
@@ -23,7 +24,7 @@ elif [[ "$_arg_command" == "open" ]]; then
     done
 elif [[ "$_arg_command" == "edit" ]]; then
     PS3="Which file to edit?"
-    select file in `ls sketches`
+    select file in $SKETCHES
     do
         echo "$file selected"
         nvim ./sketches/"$file"
