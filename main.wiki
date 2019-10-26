@@ -1,6 +1,8 @@
 = Sketches =
 == Resources ==
-http://paperjs.org/tutorials/paths/working-with-path-items/https://github.com/mattdesl/canvas-sketch/blob/master/docs/webgl.mdhttps://twitter.com/mattdesl/status/1155036597374660608?s=09
+- http://paperjs.org/tutorials/paths/working-with-path-items/https://github.com/mattdesl/canvas-sketch/blob/master/docs/webgl.mdhttps://twitter.com/mattdesl/status/1155036597374660608?s=09
+- text generation: https://deepai.org/machine-learning-model/text-generator
+- [[https://www.are.na/travis-shears/generative-art-8lw9al3epvw|Are.na Generative art]]
 
 == Keyboard sketch ==
 - interactive sketch
@@ -9,3 +11,10 @@ http://paperjs.org/tutorials/paths/working-with-path-items/https://github.com/ma
 - after typing letter semi transparent text box appiers centered over the canvas
 - svg keys?
 - layout ascii?
+
+== sketch 015 ==
+three js?
+- three ajacent walls wil lines drawn between two
+- tunnel tour with map from above?
+- text streaming out in 3d space into the distance:
+    * possibly with 2d text also mixxed in
